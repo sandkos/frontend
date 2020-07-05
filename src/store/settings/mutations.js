@@ -1,0 +1,3 @@
+export const SET_DARK_MODE = 'SET_DARK_MODE'
+export const SET_LEFT_DRAWER_OPEN = 'SET_LEFT_DRAWER_OPEN'
+export const SET_LOCALE = 'SET_LOCALE'
