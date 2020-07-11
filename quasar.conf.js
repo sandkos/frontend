@@ -6,11 +6,17 @@
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
 /* eslint-env node */
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { configure } = require('quasar/wrappers')
 
-module.exports = function (/* ctx */) {
+module.exports = configure(function (ctx) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
-    supportTS: false,
+    supportTS: {
+      tsCheckerConfig: {
+        eslint: true
+      }
+    },
 
     // https://quasar.dev/quasar-cli/prefetch-feature
     // preFetch: true,
@@ -65,12 +71,15 @@ module.exports = function (/* ctx */) {
 
       // https://quasar.dev/quasar-cli/handling-webpack
       extendWebpack (cfg) {
-        cfg.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /node_modules/
-        })
+        // linting is slow in TS projects, we execute it only for production builds
+        if (ctx.prod) {
+          cfg.module.rules.push({
+            enforce: 'pre',
+            test: /\.(js|vue)$/,
+            loader: 'eslint-loader',
+            exclude: /node_modules/
+          })
+        }
       }
     },
 
@@ -87,7 +96,7 @@ module.exports = function (/* ctx */) {
       iconSet: 'material-icons', // Quasar icon set
       lang: 'en-us', // Quasar language pack
       config: {
-        dark: 'auto' // or Boolean true/false
+        dark: 'auto'
       },
 
       // Possible values for "importStrategy":
@@ -194,4 +203,4 @@ module.exports = function (/* ctx */) {
       }
     }
   }
-}
+})

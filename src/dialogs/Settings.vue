@@ -13,29 +13,29 @@
   </q-dialog>
 </template>
 
-<script>
+<script lang="ts">
 import Settings from '../pages/Settings.vue'
-export default {
-  name: 'SettingsDialog',
-  props: {
-    // ...your custom props
-  },
+import { Vue, Component, Ref } from 'vue-property-decorator'
+import { QDialog } from 'quasar'
 
-  methods: {
-    show () {
-      this.$refs.dialog.show()
-    },
-
-    hide () {
-      this.$refs.dialog.hide()
-    },
-
-    onDialogHide () {
-      this.$emit('hide')
-    }
-  },
+@Component({
   components: {
     Settings
+  }
+})
+export default class SettingsDialog extends Vue {
+  @Ref('dialog') readonly dialog!: QDialog
+
+  show () {
+    this.dialog.show()
+  }
+
+  hide () {
+    this.dialog.hide()
+  }
+
+  onDialogHide () {
+    this.$emit('hide')
   }
 }
 </script>

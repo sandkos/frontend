@@ -26,10 +26,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Component, { mixins } from 'vue-class-component'
 import { DarkModeMixin, LocaleMixin } from '../mixins/settings'
-export default {
-  name: 'Settings',
-  mixins: [DarkModeMixin, LocaleMixin]
-}
+
+@Component
+export default class Settings extends mixins(DarkModeMixin, LocaleMixin) { }
 </script>

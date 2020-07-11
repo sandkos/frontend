@@ -1,5 +1,6 @@
+import { RouteConfig } from 'vue-router'
 
-const routes = [
+const routes: RouteConfig[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
@@ -7,19 +8,13 @@ const routes = [
       {
         path: '',
         component: () => import('pages/Index.vue'),
-        redirect: 'diary',
         children: [
           {
-            path: 'diary',
-            component: () => import('pages/Diary.vue')
-          },
-          {
-            path: 'finances',
-            component: () => import('pages/Finances.vue')
+            path: 'highlights',
+            component: () => import('pages/Highlights.vue')
           }
         ]
-      },
-      { path: 'settings', component: () => import('pages/Settings.vue'), meta: { title: 'page.settings' } }
+      }
     ]
   },
 

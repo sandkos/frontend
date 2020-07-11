@@ -4,6 +4,7 @@ export default {
   'menu.title': 'Stocks',
 
   'page.settings': 'Settings',
+  'page.highlights': 'Highlights',
 
   'settings.language': 'Language',
   'settings.view': 'View',

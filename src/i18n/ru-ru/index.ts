@@ -4,6 +4,7 @@ export default {
   'menu.title': 'Stocks',
 
   'page.settings': 'Настройки',
+  'page.highlights': 'Хайлайты',
 
   'settings.language': 'Язык',
   'settings.view': 'Вид',
