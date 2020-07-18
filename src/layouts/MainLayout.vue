@@ -1,22 +1,35 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
         <q-btn
           flat
           dense
-          round
           @click="leftDrawerOpen = !leftDrawerOpen"
           :aria-label="$t($route.meta.title)"
           icon="menu"
         ></q-btn>
-
         <q-toolbar-title>{{ $t($route.meta.title) }}</q-toolbar-title>
+        <q-btn flat round dense icon="more_vert">
+          <q-menu>
+            <q-list>
+              <q-separator />
+              <q-item clickable v-close-popup v-on:click='openAddDialog'>
+                <q-item-section avatar>
+                  <q-icon name="logout" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label>Logout</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" bordered :width="300">
-      <q-list style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+    <q-drawer v-model="leftDrawerOpen" :width="300">
+      <q-list style="height: calc(100% - 150px); margin-top: 150px;">
         <q-item clickable tag="a" exact to="highlights">
           <q-item-section avatar>
             <q-icon name="tab" />
