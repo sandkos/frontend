@@ -13,8 +13,7 @@
         <q-btn flat round dense icon="more_vert">
           <q-menu>
             <q-list>
-              <q-separator />
-              <q-item clickable v-close-popup v-on:click='openAddDialog'>
+              <q-item clickable v-close-popup>
                 <q-item-section avatar>
                   <q-icon name="logout" />
                 </q-item-section>
