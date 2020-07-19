@@ -67,6 +67,7 @@ module.exports = {
 
   // add your custom rules here
   rules: {
+    '@typescript-eslint/indent': ['error', 2],
     // allow async-await
     'generator-star-spacing': 'off',
     // allow paren-less arrow functions
